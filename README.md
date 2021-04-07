@@ -17,6 +17,14 @@ Extensions Covered:
 - cpp
 - xml
 
+## Requirements
+- Python 3
+- The following python libraries:
+    - pandas
+    - tqdm
+    - requests
+        - `pip install pandas tqdm requests`
+
 ## High-Level Architecture Design
 
 <div style="text-align:center"><img src ="arch.png" /></div>
