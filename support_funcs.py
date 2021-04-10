@@ -15,7 +15,7 @@ class API_Interface():
             self.data = dict(refresh_token=API_REFRESH_TOKEN, user_id=API_USER_ID)
             response = requests.post(ALATION_HOST +'/integration/v1/createAPIAccessToken/',
                                      json=self.data, 
-                                     verify=certificate) if using_cer_file == 'Y' else requests.post(
+                                     verify=CERTIFICATE) if USING_CER_FILE == 'Y' else requests.post(
                                      ALATION_HOST +'/integration/v1/createAPIAccessToken/',
                                      json=self.data)
 
@@ -380,7 +380,7 @@ def process_ipynb(repos):
     response = requests.post(ALATION_HOST + "/api/v1/bulk_metadata/custom_fields/default/filesystem?replace_values=true",
                              data=data,
                              headers=amai.headers,
-                             verify=certificate) if using_cer_file == 'Y' else requests.post(
+                             verify=CERTIFICATE) if USING_CER_FILE == 'Y' else requests.post(
                              ALATION_HOST + "/api/v1/bulk_metadata/custom_fields/default/filesystem?replace_values=true",
                              json=self.data)
 
@@ -402,6 +402,6 @@ def process_txt_code_files(repos):
     response = requests.post(ALATION_HOST + "/api/v1/bulk_metadata/custom_fields/default/filesystem?replace_values=true",
                              data=data,  
                              headers=amai.headers,
-                             verify=certificate) if using_cer_file == 'Y' else requests.post(
+                             verify=CERTIFICATE) if USING_CER_FILE == 'Y' else requests.post(
                              ALATION_HOST + "/api/v1/bulk_metadata/custom_fields/default/filesystem?replace_values=true",
                              json=self.data)

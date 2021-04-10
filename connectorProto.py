@@ -33,7 +33,7 @@ amai = API_Interface()
 response = requests.post(ALATION_HOST + '/api/v1/bulk_metadata/file_upload/' + str(DSID) + '/',
                          data=data,  
                          headers=amai.headers,
-                         verify=certificate) if using_cer_file == 'Y' else requests.post(
+                         verify=CERTIFICATE) if USING_CER_FILE == 'Y' else requests.post(
                          ALATION_HOST + '/api/v1/bulk_metadata/file_upload/' + str(DSID) + '/',
                          json=self.data)
 # process jupyter notebooks

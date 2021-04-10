@@ -5,7 +5,7 @@ APIKEY=""
 # Alation base URL
 BASE_URL=""
 # data source ID for the filesystem created, e.g. 5
-DSID = 7
+DSID = 
 # ------------------------------------------- #
 # API Settings
 # ------------------------------------------- #
@@ -13,5 +13,5 @@ ALATION_HOST = ""
 API_USER_ID = 
 API_REFRESH_TOKEN=""
 
-using_cer_file = 'N' # Y/N whether a certificate file is used in Alation API calls
-certificate = '***.cer' # name of the .cer certificate file in the current directory
+USING_CER_FILE = 'N' # Y/N whether a certificate file is used in Alation API calls
+CERTIFICATE = '***.cer' # name of the .cer certificate file in the current directory
