@@ -31,8 +31,11 @@ data = "\n".join(list(map(lambda x: "\n".join(list(map(str,x.tree))).replace("'"
 # replace/update contents of a file system
 amai = API_Interface()
 response = requests.post(ALATION_HOST + '/api/v1/bulk_metadata/file_upload/' + str(DSID) + '/',
-                         data=data, headers=amai.headers)
-
+                         data=data,  
+                         headers=amai.headers,
+                         verify=certificate) if using_cer_file == 'Y' else requests.post(
+                         ALATION_HOST + '/api/v1/bulk_metadata/file_upload/' + str(DSID) + '/',
+                         json=self.data)
 # process jupyter notebooks
 process_ipynb(repos)
 
