@@ -13,7 +13,12 @@ class API_Interface():
     def __init__(self):
         try:
             self.data = dict(refresh_token=API_REFRESH_TOKEN, user_id=API_USER_ID)
-            response = requests.post(ALATION_HOST +'/integration/v1/createAPIAccessToken/', json=self.data)
+            response = requests.post(ALATION_HOST +'/integration/v1/createAPIAccessToken/',
+                                     json=self.data, 
+                                     verify=CERTIFICATE) if USING_CER_FILE == 'Y' else requests.post(
+                                     ALATION_HOST +'/integration/v1/createAPIAccessToken/',
+                                     json=self.data)
+
             self.api_token = response.json()
             self.headers = {"TOKEN": self.api_token['api_access_token'],'Content-type':'application/json'}
         except Exception as e:
@@ -145,7 +150,7 @@ def get_all_repos(headers,batch_size=30):
 
 # function to run the queries
 def run_query(query,headers):
-    request = requests.post("https://api.github.com/graphql", json={"query": query}, headers=headers)
+    request = requests.post("https://api.github.com/graphql", json={"query": query},headers=headers)
     if request.status_code == 200:
         return request.json()
     else:
@@ -373,7 +378,12 @@ def process_ipynb(repos):
     # harden this API call
     amai = API_Interface()
     response = requests.post(ALATION_HOST + "/api/v1/bulk_metadata/custom_fields/default/filesystem?replace_values=true",
-                             data=data, headers=amai.headers)
+                             data=data,
+                             headers=amai.headers,
+                             verify=CERTIFICATE) if USING_CER_FILE == 'Y' else requests.post(
+                             ALATION_HOST + "/api/v1/bulk_metadata/custom_fields/default/filesystem?replace_values=true",
+                             json=self.data)
+
 
 def process_txt_code_files(repos):
     blob_data = []
@@ -390,4 +400,8 @@ def process_txt_code_files(repos):
     # Harden this API call
     amai = API_Interface()
     response = requests.post(ALATION_HOST + "/api/v1/bulk_metadata/custom_fields/default/filesystem?replace_values=true",
-                                 data=data, headers=amai.headers)
+                             data=data,  
+                             headers=amai.headers,
+                             verify=CERTIFICATE) if USING_CER_FILE == 'Y' else requests.post(
+                             ALATION_HOST + "/api/v1/bulk_metadata/custom_fields/default/filesystem?replace_values=true",
+                             json=self.data)

@@ -40,7 +40,8 @@ All `settings` are to be placed in `config.py`
 6. Add the Alation URL (without the last '/') for your instance as the value for `ALATION_HOST`
 7. Create a virtual filesystem in Alation and grab it's ID. For example, if the URL for your newly created virtual filesystem is `http://ms-sandbox.alationbd.com/filesystem/1/` then the ID is `1`.
 8. Add the ID as the value for `DSID`
-9. Run ```python connectorProto.py```
+9. if using .CER file for Alation API calls, copy the file to the same directory, set up `USING_CER_FILE` to "Y", and provide the .cer file name in the `CERTIFICATE` variable
+10. Run ```python connectorProto.py```
 
 ## Limitations:
 
